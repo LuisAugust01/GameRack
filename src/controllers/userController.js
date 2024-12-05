@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
 const { readJson, writeJson } = require('../utils/jsonHandler');
-const filePath = './data/users.json';
+const filePath = './data/user.json';
 
 const registerUser = async (req, res) => {
     try {
