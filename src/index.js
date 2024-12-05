@@ -1,17 +1,21 @@
-require('dotenv').config(); // Carrega variáveis do arquivo .env
 const express = require('express');
+const dotenv = require('dotenv');
+const userRoutes = require('./routes/userRoutes');
+const { createAdminIfNotExist } = require('./middlewares/verifCriaMiddleware');
+
+dotenv.config();
 const app = express();
 
-// Middleware para JSON
 app.use(express.json());
+app.use('/users', userRoutes);
 
-// Rota inicial de teste
-app.get('/', (req, res) => res.send('API funcionando!'));
-
-const userRoutes = require('./routes/userRoutes');
-app.use('/api/users', userRoutes);
-
-
-// Inicie o servidor
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));
+
+app.listen(PORT, async () => {
+    try {
+        await createAdminIfNotExist();
+        console.log(`Servidor rodando na porta ${PORT}`);
+    } catch (error) {
+        console.error("Erro ao inicializar a verificação de administrador:", error);
+    }
+});

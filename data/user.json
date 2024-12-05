@@ -1,8 +1,8 @@
 [
   {
-    "id": 1733422185475,
-    "username": "user1",
-    "password": "$2a$10$N4zcwvdXtkLA9pcvTC8Db.VFIPFI5Coq8GHwii82.GseT41dbnTlq",
-    "isAdmin": false
+    "id": "24-1111",
+    "username": "admin",
+    "password": "$2b$10$kUXT2c.ZQpx593pGgPhBdOzjEv1mixTy0o7OlxedRH5KjnR.452Y6",
+    "isAdmin": true
   }
 ]
