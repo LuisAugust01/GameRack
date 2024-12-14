@@ -4,17 +4,20 @@ const Game = require('../models/gameModel');
 
 const gamesFilePath = path.join(__dirname, '../../data/game.json');
 
-// Listar todos os jogos
 const getGames = async (req, res) => {
     try {
         const games = await readJson(gamesFilePath);
-        res.status(200).json(games);
+        const formattedGames = games.map(game => ({
+            id: game.id,
+            nome: game.name
+        }));
+        res.status(200).json(formattedGames);
     } catch (error) {
         res.status(500).json({ message: 'Erro ao buscar jogos.', error });
     }
 };
 
-// Adicionar um novo jogo
+
 const createGame = async (req, res) => {
     const { nome } = req.body;
 

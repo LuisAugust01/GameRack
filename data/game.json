@@ -1,11 +1,10 @@
 [
-    {
-      "id": 1,
-      "nome": "CS:GO"
-    },
-    {
-      "id": 2,
-      "nome": "Dota 2"
-    }
-  ]
-  
+  {
+    "id": 1,
+    "name": "CS:GO"
+  },
+  {
+    "id": 2,
+    "name": "Dota 2"
+  }
+]

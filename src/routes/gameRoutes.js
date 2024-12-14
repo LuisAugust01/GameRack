@@ -3,7 +3,7 @@ const { getGames, createGame } = require('../controllers/gameController');
 
 const router = express.Router();
 
-router.get('/', getGames); // Listar jogos
-router.post('/', createGame); // Criar um jogo
+router.get('/', getGames);
+router.post('/', createGame);
 
 module.exports = router;

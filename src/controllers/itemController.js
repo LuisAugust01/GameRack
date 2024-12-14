@@ -4,7 +4,6 @@ const Item = require('../models/itemModel');
 
 const itemsFilePath = path.join(__dirname, '../../data/item.json');
 
-// Listar todos os itens
 const getItems = async (req, res) => {
     try {
         const items = await readJson(itemsFilePath);
@@ -14,7 +13,6 @@ const getItems = async (req, res) => {
     }
 };
 
-// Adicionar um novo item
 const createItem = async (req, res) => {
     const { gameId, tipo, nome, qualidade, descricao, preco, contato } = req.body;
 

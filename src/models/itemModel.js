@@ -1,13 +1,13 @@
 class Item {
-    constructor(id, gameId, tipo, nome, qualidade, descricao, preco, contato) {
+    constructor(id, gameId, type, name, quality, description, price, contact) {
         this.id = id;
         this.gameId = gameId;
-        this.tipo = tipo;
-        this.nome = nome;
-        this.qualidade = qualidade;
-        this.descricao = descricao;
-        this.preco = preco;
-        this.contato = contato;
+        this.type = type;
+        this.name = name;
+        this.quality = quality;
+        this.description = description;
+        this.price = price;
+        this.contact = contact;
     }
 }
 

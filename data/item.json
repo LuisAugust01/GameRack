@@ -1,64 +1,62 @@
 [
-    {
-      "id": 1,
-      "tipo": "skin",
-      "nome": "Awp | Dragon Lore",
-      "qualidade": "raríssima",
-      "descricao": "Uma das skins mais icônicas do CS:GO, com um design de dragão lendário.",
-      "preco": 2000,
-      "contato": "contato@exemplo.com",
-      "jogoId": 1
-    },
-    {
-      "id": 2,
-      "tipo": "skin",
-      "nome": "AK-47 | Fire Serpent",
-      "qualidade": "muito rara",
-      "descricao": "Skin de AK-47 com tema de serpente de fogo, muito procurada pelos jogadores.",
-      "preco": 1500,
-      "contato": "contato@exemplo.com",
-      "jogoId": 1
-    },
-    {
-      "id": 3,
-      "tipo": "item",
-      "nome": "Key",
-      "qualidade": "comum",
-      "descricao": "Usada para abrir caixas no CS:GO.",
-      "preco": 5,
-      "contato": "contato@exemplo.com",
-      "jogoId": 1
-    },
-    {
-      "id": 4,
-      "tipo": "skin",
-      "nome": "Arcana | Anti-Mage",
-      "qualidade": "arcana",
-      "descricao": "Uma arcana para Anti-Mage com um visual glorioso e efeitos especiais.",
-      "preco": 1200,
-      "contato": "contato@exemplo.com",
-      "jogoId": 2
-    },
-    {
-        "id": 5,
-        "tipo": "skin",
-        "nome": "Dragonclaw Hook",
-        "qualidade": "rara",
-        "descricao": "Uma skin épica para o icônico Hook de Pudge, com temática de dragão.",
-        "preco": 35.00,
-        "contato": "contato@exemplo.com",
-        "jogoId": 2
-      }
-      ,
-    {
-      "id": 6,
-      "tipo": "skin",
-      "nome": "Drow Ranger | Frost Arrows",
-      "qualidade": "rara",
-      "descricao": "Skin para Drow Ranger com efeito especial nas flechas de gelo.",
-      "preco": 350,
-      "contato": "contato@exemplo.com",
-      "jogoId": 2
-    }
-  ]
-  
+  {
+    "id": 1,
+    "type": "skin",
+    "name": "Awp | Dragon Lore",
+    "quality": "rare",
+    "description": "One of the most iconic skins in CS:GO, with a legendary dragon design.",
+    "price": 2000,
+    "contact": "contato@exemplo.com",
+    "gameId": 1
+  },
+  {
+    "id": 2,
+    "type": "skin",
+    "name": "AK-47 | Fire Serpent",
+    "quality": "very rare",
+    "description": "AK-47 skin with a fire serpent theme, highly sought after by players.",
+    "price": 1500,
+    "contact": "contato@exemplo.com",
+    "gameId": 1
+  },
+  {
+    "id": 3,
+    "type": "item",
+    "name": "Key",
+    "quality": "common",
+    "description": "Used to open boxes in CS:GO.",
+    "price": 5,
+    "contact": "contato@exemplo.com",
+    "gameId": 1
+  },
+  {
+    "id": 4,
+    "type": "skin",
+    "name": "Arcana | Anti-Mage",
+    "quality": "arcana",
+    "description": "An arcana for Anti-Mage with glorious visuals and special effects.",
+    "price": 1200,
+    "contact": "contato@exemplo.com",
+    "gameId": 2
+  },
+  {
+    "id": 5,
+    "type": "skin",
+    "name": "Dragonclaw Hook",
+    "quality": "rare",
+    "description": "An epic skin for Pudge's iconic Hook, with a dragon theme.",
+    "price": 35.00,
+    "contact": "contato@exemplo.com",
+    "gameId": 2
+  },
+  {
+    "id": 6,
+    "type": "skin",
+    "name": "Drow Ranger | Frost Arrows",
+    "quality": "rare",
+    "description": "Skin for Drow Ranger with a special effect on the frost arrows.",
+    "price": 350,
+    "contact": "contato@exemplo.com",
+    "gameId": 2
+  }
+]
