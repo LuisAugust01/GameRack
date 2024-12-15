@@ -4,5 +4,29 @@
     "username": "admin",
     "password": "$2b$10$kUXT2c.ZQpx593pGgPhBdOzjEv1mixTy0o7OlxedRH5KjnR.452Y6",
     "isAdmin": true
+  },
+  {
+    "id": "24-1122",
+    "username": "user1",
+    "password": "$2b$10$kUXT2c.ZQpx593pGgPhBdOzjEv1mixTy0o7OlxedRH5KjnR.452Y6",
+    "isAdmin": false
+  },
+  {
+    "id": "24-1155",
+    "username": "user2",
+    "password": "$2b$10$kUXT2c.ZQpx593pGgPhBdOzjEv1mixTy0o7OlxedRH5KjnR.452Y6",
+    "isAdmin": false
+  },
+  {
+    "id": "24-1200",
+    "username": "user3",
+    "password": "$2b$10$kUXT2c.ZQpx593pGgPhBdOzjEv1mixTy0o7OlxedRH5KjnR.452Y6",
+    "isAdmin": false
+  },
+  {
+    "id": "24-1344",
+    "username": "user4",
+    "password": "$2b$10$kUXT2c.ZQpx593pGgPhBdOzjEv1mixTy0o7OlxedRH5KjnR.452Y6",
+    "isAdmin": false
   }
 ]

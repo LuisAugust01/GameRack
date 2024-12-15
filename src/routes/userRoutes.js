@@ -8,6 +8,6 @@ const router = express.Router();
 router.post('/register', registerUser);
 router.post('/login', loginUser);
 router.post('/create-admin', authenticateToken, verifyAdmin, createAdmin);
-router.delete('/:id', authenticateToken, verifyAdmin, deleteUser);
+router.delete('/delete-user/:id', authenticateToken, verifyAdmin, deleteUser);
 
 module.exports = router;
