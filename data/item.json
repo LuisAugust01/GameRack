@@ -1,63 +1,63 @@
 [
   {
     "id": 1,
-    "tipo": "skin",
-    "nome": "Awp | Dragon Lore",
-    "qualidade": "rara",
-    "descricao": "Uma das skins mais icônicas do CS:GO, com um design lendário de dragão.",
-    "preco": 2000,
-    "contato": "contato@exemplo.com",
-    "idJogo": 1
+    "type": "skin",
+    "name": "Awp | Dragon Lore",
+    "quality": "rara",
+    "description": "Uma das skins mais icônicas do CS:GO, com um design lendário de dragão.",
+    "price": 2000,
+    "contact": "contact@exemplo.com",
+    "idGame": 1
   },
   {
     "id": 2,
-    "tipo": "skin",
-    "nome": "AK-47 | Fire Serpent",
-    "qualidade": "muito rara",
+    "type": "skin",
+    "name": "AK-47 | Fire Serpent",
+    "quality": "muito rara",
     "descricao": "Skin da AK-47 com tema de serpente de fogo, muito procurada pelos jogadores.",
-    "preco": 1500,
-    "contato": "contato@exemplo.com",
-    "idJogo": 1
+    "price": 1500,
+    "contact": "contact@exemplo.com",
+    "idGame": 1
   },
   {
     "id": 3,
-    "tipo": "item",
-    "nome": "Chave",
-    "qualidade": "comum",
+    "type": "item",
+    "name": "Chave",
+    "quality": "comum",
     "descricao": "Usada para abrir caixas no CS:GO.",
-    "preco": 5,
-    "contato": "contato@exemplo.com",
-    "idJogo": 1
+    "price": 5,
+    "contact": "contact@exemplo.com",
+    "idGame": 1
   },
   {
     "id": 4,
-    "tipo": "skin",
-    "nome": "Arcana | Anti-Mage",
-    "qualidade": "arcana",
+    "type": "skin",
+    "name": "Arcana | Anti-Mage",
+    "quality": "arcana",
     "descricao": "Uma arcana para Anti-Mage com visuais gloriosos e efeitos especiais.",
-    "preco": 1200,
-    "contato": "contato@exemplo.com",
-    "idJogo": 2
+    "price": 1200,
+    "contact": "contact@exemplo.com",
+    "idGame": 2
   },
   {
     "id": 5,
-    "tipo": "skin",
-    "nome": "Dragonclaw Hook",
-    "qualidade": "rara",
+    "type": "skin",
+    "name": "Dragonclaw Hook",
+    "quality": "rara",
     "descricao": "Uma skin épica para o icônico Hook do Pudge, com tema de dragão.",
-    "preco": 35.00,
-    "contato": "contato@exemplo.com",
-    "idJogo": 2
+    "price": 35.00,
+    "contact": "contact@exemplo.com",
+    "idGame": 2
   },
   {
     "id": 6,
-    "tipo": "skin",
-    "nome": "Drow Ranger | Frost Arrows",
-    "qualidade": "rara",
+    "type": "skin",
+    "name": "Drow Ranger | Frost Arrows",
+    "quality": "rara",
     "descricao": "Skin para Drow Ranger com efeito especial nas flechas de gelo.",
-    "preco": 350,
-    "contato": "contato@exemplo.com",
-    "idJogo": 2
+    "price": 350,
+    "contact": "contact@exemplo.com",
+    "idGame": 2
   }
 ]
 

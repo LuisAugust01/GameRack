@@ -1,8 +1,11 @@
-const { readJson, writeJson } = require('../utils/jsonUtils');
+const dotenv = require('dotenv');
+require('dotenv').config();
+
+const { readJson, writeJson } = require('../utils/jsonHandler');
 const path = require('path');
 const Game = require('../models/gameModel');
 
-const gamesFilePath = path.join(__dirname, '../../data/game.json');
+const gamesFilePath = process.env.GAMES_FILE_PATH 
 
 const getGames = async (req, res) => {
     try {
@@ -17,11 +20,10 @@ const getGames = async (req, res) => {
     }
 };
 
-
 const createGame = async (req, res) => {
-    const { nome } = req.body;
+    const { name } = req.body;
 
-    if (!nome) {
+    if (!name) {
         return res.status(400).json({ message: 'O nome do jogo é obrigatório.' });
     }
 
@@ -29,7 +31,7 @@ const createGame = async (req, res) => {
         const games = await readJson(gamesFilePath);
         const id = games.length + 1;
 
-        const newGame = new Game(id, nome);
+        const newGame = new Game(id, name);
         games.push(newGame);
 
         await writeJson(gamesFilePath, games);

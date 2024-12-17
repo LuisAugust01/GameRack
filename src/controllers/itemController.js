@@ -1,4 +1,4 @@
-const { readJson, writeJson } = require('../utils/jsonUtils');
+const { readJson, writeJson } = require('../utils/jsonHandler');
 const path = require('path');
 const Item = require('../models/itemModel');
 
