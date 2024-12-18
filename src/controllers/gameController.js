@@ -1,11 +1,10 @@
-const dotenv = require('dotenv');
-require('dotenv').config();
-
 const { readJson, writeJson } = require('../utils/jsonHandler');
 const path = require('path');
 const Game = require('../models/gameModel');
+const { FILE_PATHS } = require('../config');
 
-const gamesFilePath = process.env.GAMES_FILE_PATH 
+const gamesFilePath = path.resolve(__dirname, FILE_PATHS.GAMES);
+
 
 const getGames = async (req, res) => {
     try {

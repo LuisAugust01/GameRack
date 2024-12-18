@@ -1,14 +1,27 @@
 [
   {
-    "id": "24-1111",
-    "username": "admin",
-    "password": "$2b$10$kUXT2c.ZQpx593pGgPhBdOzjEv1mixTy0o7OlxedRH5KjnR.452Y6",
-    "isAdmin": true
-  },
-  {
     "id": "24-1345",
     "username": "plinio",
     "password": "$2b$10$NJmL/f3.uLFKPaXpKxjDB.UPq0mg36eQOvGN1ELDI5q7.ZsFAtBpu",
     "isAdmin": false
+  },
+  {
+    "id": "24-1346",
+    "username": "jose",
+    "password": "$2b$10$AOHT/vUhIRUnrP.zJ8S6NuTMURuRdMW0NHASazCfFxY0cqQHaMdje",
+    "isAdmin": false
+  },
+  {
+    "id": "24-1347",
+    "username": "jose2",
+    "password": "$2b$10$L5KQnkKXKtDTzEmyQN99Rey1rqJsxUlSn2MzasG208F0uVnsC/Jiq",
+    "isAdmin": false
+  },
+  {
+    "id": "24-1114",
+    "username": "admin",
+    "email": "admin@example.com",
+    "password": "$2b$10$8UIbJ0xY1.Xbq5JZrT0TQucoXN/YWZRYxX3lDrwcR0KP4FdRn5CjS",
+    "isAdmin": true
   }
 ]

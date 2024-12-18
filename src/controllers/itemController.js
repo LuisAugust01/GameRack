@@ -1,8 +1,9 @@
 const { readJson, writeJson } = require('../utils/jsonHandler');
 const path = require('path');
 const Item = require('../models/itemModel');
+const { FILE_PATHS } = require('../config');
 
-const itemsFilePath = path.join(__dirname, '../../data/item.json');
+const itemsFilePath = path.resolve(__dirname, FILE_PATHS.ITEMS);
 
 const getItems = async (req, res) => {
     try {

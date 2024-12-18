@@ -1,13 +1,12 @@
 const express = require('express');
-const dotenv = require('dotenv');
 const userRoutes = require('./routes/userRoutes');
 const gameRoutes = require('./routes/gameRoutes');
 const itemRoutes = require('./routes/itemRoutes');
-const { createAdminIfNotExist } = require('./middlewares/verifCriaMiddleware');
 const swaggerDocs = require('../swagger-output.json');
 const swaggerExpress = require('swagger-ui-express');
+const { createAdminIfNotExistAuto } = require('../src/controllers/userController')
+const { PORT } = require('../src/config');
 
-dotenv.config();
 const app = express();
 
 app.use(express.json());
@@ -20,13 +19,11 @@ app.get('/', (req, res) => {
     res.send('Servidor funcionando! 🎉');
 });
 
-const PORT = process.env.PORT || 3000;
-
 app.listen(PORT, async () => {
     try {
-        await createAdminIfNotExist();
+        await createAdminIfNotExistAuto();
         console.log(`Servidor rodando na porta ${PORT}`);
     } catch (error) {
-        console.error("Erro ao inicializar a verificação de administrador:", error);
+        console.error('Erro ao criar o administrador:', error);
     }
 });
