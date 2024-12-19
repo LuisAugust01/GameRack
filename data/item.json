@@ -7,7 +7,8 @@
     "description": "Uma das skins mais icônicas do CS:GO, com um design lendário de dragão.",
     "price": 2000,
     "contact": "contact@exemplo.com",
-    "idGame": 1
+    "idGame": 1,
+    "createdBy": "24-1346"
   },
   {
     "id": 2,
@@ -17,7 +18,8 @@
     "descricao": "Skin da AK-47 com tema de serpente de fogo, muito procurada pelos jogadores.",
     "price": 1500,
     "contact": "contact@exemplo.com",
-    "idGame": 1
+    "idGame": 1,
+    "createdBy": "24-1347"
   },
   {
     "id": 3,
@@ -27,7 +29,8 @@
     "descricao": "Usada para abrir caixas no CS:GO.",
     "price": 5,
     "contact": "contact@exemplo.com",
-    "idGame": 1
+    "idGame": 1,
+    "createdBy": "24-1345"
   },
   {
     "id": 4,
@@ -37,7 +40,8 @@
     "descricao": "Uma arcana para Anti-Mage com visuais gloriosos e efeitos especiais.",
     "price": 1200,
     "contact": "contact@exemplo.com",
-    "idGame": 2
+    "idGame": 2,
+    "createdBy": "24-1346"
   },
   {
     "id": 5,
@@ -47,7 +51,8 @@
     "descricao": "Uma skin épica para o icônico Hook do Pudge, com tema de dragão.",
     "price": 35.00,
     "contact": "contact@exemplo.com",
-    "idGame": 2
+    "idGame": 2,
+    "createdBy": "24-1347"
   },
   {
     "id": 6,
@@ -57,7 +62,8 @@
     "descricao": "Skin para Drow Ranger com efeito especial nas flechas de gelo.",
     "price": 350,
     "contact": "contact@exemplo.com",
-    "idGame": 2
+    "idGame": 2,
+    "createdBy": "24-1345"
   }
 ]
 
