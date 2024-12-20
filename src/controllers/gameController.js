@@ -5,15 +5,16 @@ const { FILE_PATHS } = require('../config');
 
 const gamesFilePath = path.resolve(__dirname, FILE_PATHS.GAMES);
 
+// Função para listar jogos com paginação
 const getGames = async (req, res) => {
-    const { limite = 10, pagina = 1 } = req.query;
+    const { limit = 10, page = 1 } = req.query;
 
     const validLimits = [5, 10, 30];
-    if (!validLimits.includes(Number(limite))) {
+    if (!validLimits.includes(Number(limit))) {
         return res.status(400).json({ message: 'O limite deve ser 5, 10 ou 30.' });
     }
 
-    if (isNaN(pagina) || pagina < 1) {
+    if (isNaN(page) || page < 1) {
         return res.status(400).json({ message: 'A página deve ser um número maior ou igual a 1.' });
     }
 
@@ -26,24 +27,24 @@ const getGames = async (req, res) => {
             name: game.name
         }));
 
-        const startIndex = (pagina - 1) * limite;
-        const endIndex = startIndex + Number(limite);
+        const startIndex = (page - 1) * limit;
+        const endIndex = startIndex + Number(limit);
 
-        const paginatedGames = formattedGames.slice(startIndex, endIndex);
+        const pagedGames = formattedGames.slice(startIndex, endIndex);
 
         res.status(200).json({
             total: totalGames,
-            limite: Number(limite),
-            pagina: Number(pagina),
-            totalPaginas: Math.ceil(totalGames / limite),
-            dados: paginatedGames
+            limit: Number(limit),
+            page: Number(page),
+            totalPages: Math.ceil(totalGames / limit),
+            data: pagedGames
         });
     } catch (error) {
         res.status(500).json({ message: 'Erro ao buscar jogos.', error });
     }
 };
 
-
+// Função para criar um novo jogo
 const createGame = async (req, res) => {
     const { name } = req.body;
 
@@ -65,6 +66,7 @@ const createGame = async (req, res) => {
     }
 };
 
+// Função para atualizar um jogo existente
 const updateGame = async (req, res) => {
     const { id } = req.params;
     const { name } = req.body;
@@ -75,7 +77,7 @@ const updateGame = async (req, res) => {
 
     try {
         const games = await readJson(gamesFilePath);
-        const gameIndex = games.findIndex(game => game.id === parseInt(id));
+        const gameIndex = games.findIndex(game => game.id === parseInt(id)); 
 
         if (gameIndex === -1) {
             return res.status(404).json({ message: 'Jogo não encontrado.' });
@@ -90,6 +92,7 @@ const updateGame = async (req, res) => {
     }
 };
 
+// Função para excluir um jogo e seus itens relacionados
 const deleteGame = async (req, res) => {
     const { id } = req.params;
 
@@ -108,7 +111,6 @@ const deleteGame = async (req, res) => {
         const filteredItems = items.filter(item => item.gameId !== parseInt(id));
 
         await writeJson(itemsFilePath, filteredItems);
-
         await writeJson(gamesFilePath, games);
 
         res.status(200).json({ message: 'Jogo e itens excluídos com sucesso.', game: removedGame });
