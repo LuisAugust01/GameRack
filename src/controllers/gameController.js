@@ -95,6 +95,8 @@ const deleteGame = async (req, res) => {
 
     try {
         const games = await readJson(gamesFilePath);
+        const items = await readJson(itemsFilePath);
+
         const gameIndex = games.findIndex(game => game.id === parseInt(id));
 
         if (gameIndex === -1) {
@@ -103,10 +105,15 @@ const deleteGame = async (req, res) => {
 
         const removedGame = games.splice(gameIndex, 1);
 
+        const filteredItems = items.filter(item => item.gameId !== parseInt(id));
+
+        await writeJson(itemsFilePath, filteredItems);
+
         await writeJson(gamesFilePath, games);
-        res.status(200).json({ message: 'Jogo excluído com sucesso.', game: removedGame });
+
+        res.status(200).json({ message: 'Jogo e itens excluídos com sucesso.', game: removedGame });
     } catch (error) {
-        res.status(500).json({ message: 'Erro ao excluir jogo.', error });
+        res.status(500).json({ message: 'Erro ao excluir jogo e itens.', error });
     }
 };
 

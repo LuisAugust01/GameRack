@@ -1,30 +1,30 @@
 [
   {
-    "id": "24-1345",
-    "username": "plinio",
-    "email": "user1@example.com",
-    "password": "$2b$10$NJmL/f3.uLFKPaXpKxjDB.UPq0mg36eQOvGN1ELDI5q7.ZsFAtBpu",
-    "isAdmin": false
+    "id": "24-1112",
+    "username": "adm2",
+    "password": "$2b$10$JDO9AffQBqeP/fDExZkvwumoAbJPVK/9CVDnMUQ/m/nxTrxywq7/m",
+    "isAdmin": true,
+    "email": "admin2@example.com"
   },
   {
-    "id": "24-1346",
-    "username": "jose",
-    "email": "user2@example.com",
-    "password": "$2b$10$AOHT/vUhIRUnrP.zJ8S6NuTMURuRdMW0NHASazCfFxY0cqQHaMdje",
-    "isAdmin": false
+    "id": "24-1113",
+    "username": "analuiza",
+    "password": "$2b$10$g7w.oSCxnlpAw8PALP49f.e3fkouI4ROlrAIfT9ppH7NHstPu9bTC",
+    "isAdmin": false,
+    "email": "luluzin@gmail.com"
   },
   {
-    "id": "24-1347",
-    "username": "jose2",
-    "email": "user3@example.com",
-    "password": "$2b$10$L5KQnkKXKtDTzEmyQN99Rey1rqJsxUlSn2MzasG208F0uVnsC/Jiq",
-    "isAdmin": false
+    "id": "24-1115",
+    "username": "morato",
+    "password": "$2b$10$N2h6bprv5s..x/yqU0ryruRMdqCc2hWmiKA62oQEyV4frihiKEyzC",
+    "isAdmin": true,
+    "email": "morato@gmail.com"
   },
   {
-    "id": "24-1114",
-    "username": "admin",
-    "email": "admin@example.com",
-    "password": "$2b$10$8UIbJ0xY1.Xbq5JZrT0TQucoXN/YWZRYxX3lDrwcR0KP4FdRn5CjS",
-    "isAdmin": true
+    "id": "24-1116",
+    "username": "Gutin",
+    "password": "$2b$10$.4M83u3itzcvbyzne0Ljk.YBJkIeC5ab6EzmsrEpjUoa/INAG84km",
+    "isAdmin": false,
+    "email": "Gutin@gmail.com"
   }
 ]

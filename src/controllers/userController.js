@@ -104,11 +104,21 @@ const getUserProfile = async (req, res) => {
 
 // Obter todos os usuários (apenas administradores)
 const getAllUsers = async (req, res) => {
-    try {
+    const { limite = 10, pagina = 1 } = req.query;
 
+    const validLimits = [5, 10, 30];
+    if (!validLimits.includes(Number(limite))) {
+        return res.status(400).json({ message: 'O limite deve ser 5, 10 ou 30.' });
+    }
+
+    if (isNaN(pagina) || pagina < 1) {
+        return res.status(400).json({ message: 'A página deve ser um número maior ou igual a 1.' });
+    }
+
+    try {
         const users = await readJson(usersFilePath);
 
-        // Retorna os usuários sem expor as senhas
+        // Remove as informações sensíveis (senha)
         const sanitizedUsers = users.map(user => ({
             id: user.id,
             username: user.username,
@@ -116,7 +126,19 @@ const getAllUsers = async (req, res) => {
             isAdmin: user.isAdmin
         }));
 
-        res.json(sanitizedUsers);
+        const totalUsers = sanitizedUsers.length;
+        const startIndex = (pagina - 1) * limite;
+        const endIndex = startIndex + Number(limite);
+
+        const paginatedUsers = sanitizedUsers.slice(startIndex, endIndex);
+
+        res.status(200).json({
+            total: totalUsers,
+            limite: Number(limite),
+            pagina: Number(pagina),
+            totalPaginas: Math.ceil(totalUsers / limite),
+            dados: paginatedUsers
+        });
     } catch (error) {
         res.status(500).json({ message: 'Erro ao buscar os usuários.', error });
     }
@@ -124,12 +146,12 @@ const getAllUsers = async (req, res) => {
 
 // Atualizar dados do usuário
 const updateUser = async (req, res) => {
-    const userId = req.user.id;
     const { id } = req.params;
     const { username, email, password } = req.body;
 
     try {
         const users = await readJson(usersFilePath);
+
         const userIndex = users.findIndex(u => u.id === id);
 
         if (userIndex === -1) {
@@ -137,10 +159,6 @@ const updateUser = async (req, res) => {
         }
 
         const user = users[userIndex];
-
-        if (userId !== id && !req.user.isAdmin) {
-            return res.status(403).json({ message: 'Você não tem permissão para atualizar este usuário.' });
-        }
 
         if (username) user.username = username;
         if (email) user.email = email;
@@ -180,7 +198,7 @@ const loginUser = async (req, res) => {
     }
 };
 
-// Excluir usuário (apenas admin)
+// Excluir usuário
 const deleteUser = async (req, res) => {
     const { id } = req.params;
 
@@ -194,6 +212,7 @@ const deleteUser = async (req, res) => {
         }
 
         users.splice(userIndex, 1);
+
         await writeJson(usersFilePath, users);
 
         res.json({ message: 'Usuário excluído com sucesso.' });
@@ -209,7 +228,7 @@ const createAdminIfNotExist = async () => {
 
         const id = '24-1111';
         const hashedPassword = await bcrypt.hash('adminPassword', 10);
-        const newAdmin = new User(id, 'admin', 'admin@example.com', hashedPassword, true);
+        const newAdmin = new User(id, 'admin', hashedPassword, true,'admin@example.com');
 
         users.push(newAdmin);
         await writeJson(usersFilePath, users);
@@ -229,7 +248,7 @@ const createAdminIfNotExistAuto = async () => {
         if (!adminExists) {
             const id = `24-${users.length + 1111}`;
             const hashedPassword = await bcrypt.hash('adminPassword', 10);
-            const newAdmin = new User(id, 'admin', 'admin@example.com', hashedPassword, true);
+            const newAdmin = new User(id, 'admin', hashedPassword, true,'admin@example.com');
 
             users.push(newAdmin);
 

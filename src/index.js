@@ -4,7 +4,8 @@ const gameRoutes = require('./routes/gameRoutes');
 const itemRoutes = require('./routes/itemRoutes');
 const swaggerDocs = require('../swagger-output.json');
 const swaggerExpress = require('swagger-ui-express');
-const { createAdminIfNotExistAuto } = require('../src/controllers/userController')
+const { createAdminIfNotExistAuto, createAdminIfNotExist } = require('../src/controllers/userController');
+const { verifyAdminMiddleware } = require('../src/middlewares/verifyAdminMiddleware');
 const { PORT } = require('../src/config');
 
 const app = express();
@@ -14,6 +15,7 @@ app.use('/users', userRoutes);
 app.use('/games', gameRoutes);
 app.use('/items', itemRoutes);
 app.use('/docs',swaggerExpress.serve,swaggerExpress.setup(swaggerDocs));
+app.get('/install', verifyAdminMiddleware, createAdminIfNotExist)
 
 app.get('/', (req, res) => {
     res.send('Servidor funcionando! 🎉');

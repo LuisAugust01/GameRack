@@ -49,7 +49,7 @@
     "name": "Dragonclaw Hook",
     "quality": "rara",
     "descricao": "Uma skin épica para o icônico Hook do Pudge, com tema de dragão.",
-    "price": 35.00,
+    "price": 35,
     "contact": "contact@exemplo.com",
     "idGame": 2,
     "createdBy": "24-1347"
@@ -64,6 +64,38 @@
     "contact": "contact@exemplo.com",
     "idGame": 2,
     "createdBy": "24-1345"
+  },
+  {
+    "id": 7,
+    "gameId": 4,
+    "type": "skin",
+    "name": "geleira mortal",
+    "quality": "rara",
+    "description": "Skin para sniper com efeito especial nas flechas de gelo.",
+    "price": 550,
+    "contact": "contact@exemplo.com",
+    "createdBy": "24-1116"
+  },
+  {
+    "id": 8,
+    "gameId": 2,
+    "type": "skin",
+    "name": "geleira mortal",
+    "quality": "rara",
+    "description": "Skin para sniper com efeito especial nas flechas de gelo.",
+    "price": 550,
+    "contact": "contact@exemplo.com",
+    "createdBy": "24-1116"
+  },
+  {
+    "id": 9,
+    "gameId": 1,
+    "type": "skin",
+    "name": "geleira mortal",
+    "quality": "rara",
+    "description": "Skin para sniper com efeito especial nas flechas de gelo.",
+    "price": 550,
+    "contact": "contact@exemplo.com",
+    "createdBy": "24-1116"
   }
 ]
-

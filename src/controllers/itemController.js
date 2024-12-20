@@ -4,6 +4,7 @@ const Item = require('../models/itemModel');
 const { FILE_PATHS } = require('../config');
 
 const itemsFilePath = path.resolve(__dirname, FILE_PATHS.ITEMS);
+const gamesFilePath = path.resolve(__dirname, FILE_PATHS.GAMES);
 
 const getItems = async (req, res) => {
     const { limite = 10, pagina = 1 } = req.query;
@@ -42,23 +43,58 @@ const getItems = async (req, res) => {
 };
 
 const createItem = async (req, res) => {
-    const { gameId, type, name, quality, description, price, contact, createdBy } = req.body;
+    const { gameName, type, name, quality, description, price, contact } = req.body;
 
-    if (!gameId || !type || !name || !price || !contact || !createdBy) {
+    // Verificando se os campos obrigatórios foram preenchidos
+    if (!gameName || !type || !name || !price || !contact) {
         return res.status(400).json({ 
-            message: 'Os campos gameId, tipo, nome, preço, contato e createdBy são obrigatórios.' 
+            message: 'Os campos gameName, tipo, nome, preço e contato são obrigatórios.' 
         });
     }
 
     try {
+        // Lê o arquivo de jogos para encontrar o jogo pelo nome
+        const games = await readJson(gamesFilePath);
+        const game = games.find(game => game.name.toLowerCase() === gameName.toLowerCase());
+
+        if (!game) {
+            return res.status(404).json({ message: 'Jogo não encontrado.' });
+        }
+
         const items = await readJson(itemsFilePath);
         const id = items.length + 1;
 
-        const newItem = new Item(id, gameId, type, name, quality, description, price, contact, createdBy);
+        // Criando o item com as informações fornecidas e preenchendo os dados que não são fornecidos
+        const newItem = new Item(
+            id,                           // ID do item
+            game.id,                       // ID do jogo (procurado pelo nome)
+            type,                          // Tipo do item
+            name,                          // Nome do item
+            quality,                       // Qualidade do item (opcional)
+            description,                   // Descrição do item (opcional)
+            price,                         // Preço do item
+            contact,                       // Contato do item
+            req.user.id                    // O ID do usuário logado (assumido que vem no req.user.id)
+        );
+
+        // Adicionando o novo item à lista de itens
         items.push(newItem);
 
+        // Salvando os itens atualizados no arquivo
         await writeJson(itemsFilePath, items);
-        res.status(201).json(newItem);
+
+        // Respondendo com o novo item no formato desejado
+        res.status(201).json({
+            id: newItem.id,
+            type: newItem.type,
+            name: newItem.name,
+            quality: newItem.quality,
+            description: newItem.description,
+            price: newItem.price,
+            contact: newItem.contact,
+            idGame: newItem.gameId,        // ID do jogo
+            createdBy: newItem.createdBy   // ID do usuário que criou o item
+        });
     } catch (error) {
         res.status(500).json({ message: 'Erro ao criar item.', error });
     }
@@ -66,11 +102,12 @@ const createItem = async (req, res) => {
 
 const updateItem = async (req, res) => {
     const { id } = req.params;
-    const { gameId, type, name, quality, description, price, contact, createdBy } = req.body;
+    const { type, name, quality, description, price, contact } = req.body;
 
-    if (!gameId || !type || !name || !price || !contact || !createdBy) {
+    // Verifica se os campos obrigatórios foram preenchidos
+    if (!type || !name || !price || !contact) {
         return res.status(400).json({ 
-            message: 'Os campos gameId, tipo, nome, preço, contato e createdBy são obrigatórios.' 
+            message: 'Os campos tipo, nome, preço e contato são obrigatórios.' 
         });
     }
 
@@ -82,16 +119,21 @@ const updateItem = async (req, res) => {
             return res.status(404).json({ message: 'Item não encontrado.' });
         }
 
+        // Pega o ID do jogo atual e o ID do usuário logado
+        const gameId = items[itemIndex].gameId;
+        const createdBy = req.user.id; // Pega o ID do usuário logado (assumido que está em req.user.id)
+
+        // Atualiza os dados do item, sem permitir a mudança do campo createdBy
         items[itemIndex] = {
             ...items[itemIndex],
-            gameId,
             type,
             name,
             quality,
             description,
             price,
             contact,
-            createdBy
+            createdBy,  // Agora o createdBy vem automaticamente do ID do usuário
+            gameId
         };
 
         await writeJson(itemsFilePath, items);
