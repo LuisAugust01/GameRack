@@ -102,5 +102,5 @@ Este projeto está licenciado sob a [MIT License](LICENSE).
 
 Esperamos que você aproveite a experiência com o SkinHub! Caso tenha dúvidas ou precise de ajuda, entre em contato com nossos criadores: 
 
-**José Pedro Cunha do Amaral** joseamaral@alunos.utfpr.edu.br
-**Luís Augusto Casa Grande Fonseca** lfonseca@alunos.utfpr.edu.br
+- **José Pedro Cunha do Amaral** joseamaral@alunos.utfpr.edu.br
+- **Luís Augusto Casa Grande Fonseca** lfonseca@alunos.utfpr.edu.br
