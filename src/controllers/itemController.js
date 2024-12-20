@@ -6,16 +6,16 @@ const { FILE_PATHS } = require('../config');
 const itemsFilePath = path.resolve(__dirname, FILE_PATHS.ITEMS);
 const gamesFilePath = path.resolve(__dirname, FILE_PATHS.GAMES);
 
+// Função para buscar itens com paginação
 const getItems = async (req, res) => {
-    const { limite = 10, pagina = 1 } = req.query;
+    const { limit = 10, page = 1 } = req.query;
 
-    // Validação de parâmetros
-    const validLimits = [5, 10, 30];
-    if (!validLimits.includes(Number(limite))) {
+    const validLimit = [5, 10, 30];
+    if (!validLimit.includes(Number(limit))) {
         return res.status(400).json({ message: 'O limite deve ser 5, 10 ou 30.' });
     }
 
-    if (isNaN(pagina) || pagina < 1) {
+    if (isNaN(page) || page < 1) {
         return res.status(400).json({ message: 'A página deve ser um número maior ou igual a 1.' });
     }
 
@@ -23,29 +23,27 @@ const getItems = async (req, res) => {
         const items = await readJson(itemsFilePath);
         const totalItems = items.length;
 
-        // Cálculo de indices
-        const startIndex = (pagina - 1) * limite;
-        const endIndex = startIndex + Number(limite);
+        const startIndex = (page - 1) * limit;
+        const endIndex = startIndex + Number(limit);
 
-        // Retorna os itens paginados
-        const paginatedItems = items.slice(startIndex, endIndex);
+        const pagetedItems = items.slice(startIndex, endIndex);
 
         res.status(200).json({
             total: totalItems,
-            limite: Number(limite),
-            pagina: Number(pagina),
-            totalPaginas: Math.ceil(totalItems / limite),
-            dados: paginatedItems
+            limit: Number(limit),
+            page: Number(page),
+            totalPaginas: Math.ceil(totalItems / limit),
+            data: pagetedItems
         });
     } catch (error) {
         res.status(500).json({ message: 'Erro ao buscar itens.', error });
     }
 };
 
+// Função para criar um novo item
 const createItem = async (req, res) => {
     const { gameName, type, name, quality, description, price, contact } = req.body;
 
-    // Verificando se os campos obrigatórios foram preenchidos
     if (!gameName || !type || !name || !price || !contact) {
         return res.status(400).json({ 
             message: 'Os campos gameName, tipo, nome, preço e contato são obrigatórios.' 
@@ -53,7 +51,6 @@ const createItem = async (req, res) => {
     }
 
     try {
-        // Lê o arquivo de jogos para encontrar o jogo pelo nome
         const games = await readJson(gamesFilePath);
         const game = games.find(game => game.name.toLowerCase() === gameName.toLowerCase());
 
@@ -64,26 +61,22 @@ const createItem = async (req, res) => {
         const items = await readJson(itemsFilePath);
         const id = items.length + 1;
 
-        // Criando o item com as informações fornecidas e preenchendo os dados que não são fornecidos
         const newItem = new Item(
-            id,                           // ID do item
-            game.id,                       // ID do jogo (procurado pelo nome)
-            type,                          // Tipo do item
-            name,                          // Nome do item
-            quality,                       // Qualidade do item (opcional)
-            description,                   // Descrição do item (opcional)
-            price,                         // Preço do item
-            contact,                       // Contato do item
-            req.user.id                    // O ID do usuário logado (assumido que vem no req.user.id)
+            id,
+            game.id,
+            type,
+            name,
+            quality,
+            description,
+            price,
+            contact,
+            req.user.id
         );
 
-        // Adicionando o novo item à lista de itens
         items.push(newItem);
 
-        // Salvando os itens atualizados no arquivo
         await writeJson(itemsFilePath, items);
 
-        // Respondendo com o novo item no formato desejado
         res.status(201).json({
             id: newItem.id,
             type: newItem.type,
@@ -92,19 +85,19 @@ const createItem = async (req, res) => {
             description: newItem.description,
             price: newItem.price,
             contact: newItem.contact,
-            idGame: newItem.gameId,        // ID do jogo
-            createdBy: newItem.createdBy   // ID do usuário que criou o item
+            idGame: newItem.gameId,
+            createdBy: newItem.createdBy
         });
     } catch (error) {
         res.status(500).json({ message: 'Erro ao criar item.', error });
     }
 };
 
+// Função para atualizar um item existente
 const updateItem = async (req, res) => {
     const { id } = req.params;
     const { type, name, quality, description, price, contact } = req.body;
 
-    // Verifica se os campos obrigatórios foram preenchidos
     if (!type || !name || !price || !contact) {
         return res.status(400).json({ 
             message: 'Os campos tipo, nome, preço e contato são obrigatórios.' 
@@ -119,11 +112,9 @@ const updateItem = async (req, res) => {
             return res.status(404).json({ message: 'Item não encontrado.' });
         }
 
-        // Pega o ID do jogo atual e o ID do usuário logado
         const gameId = items[itemIndex].gameId;
-        const createdBy = req.user.id; // Pega o ID do usuário logado (assumido que está em req.user.id)
+        const createdBy = req.user.id;
 
-        // Atualiza os dados do item, sem permitir a mudança do campo createdBy
         items[itemIndex] = {
             ...items[itemIndex],
             type,
@@ -132,17 +123,19 @@ const updateItem = async (req, res) => {
             description,
             price,
             contact,
-            createdBy,  // Agora o createdBy vem automaticamente do ID do usuário
+            createdBy,
             gameId
         };
 
         await writeJson(itemsFilePath, items);
+
         res.status(200).json(items[itemIndex]);
     } catch (error) {
         res.status(500).json({ message: 'Erro ao atualizar item.', error });
     }
 };
 
+// Função para excluir um item
 const deleteItem = async (req, res) => {
     const { id } = req.params;
 
@@ -163,16 +156,17 @@ const deleteItem = async (req, res) => {
     }
 };
 
+// Função para buscar itens de um jogo específico, filtrando por nome do jogo
 const getItemsByGameName = async (req, res) => {
     const { gameName } = req.params;
-    const { limite = 10, pagina = 1 } = req.query;
+    const { limit = 10, page = 1 } = req.query;
 
-    const validLimits = [5, 10, 30];
-    if (!validLimits.includes(Number(limite))) {
+    const validLimit = [5, 10, 30];
+    if (!validLimit.includes(Number(limit))) {
         return res.status(400).json({ message: 'O limite deve ser 5, 10 ou 30.' });
     }
 
-    if (isNaN(pagina) || pagina < 1) {
+    if (isNaN(page) || page < 1) {
         return res.status(400).json({ message: 'A página deve ser um número maior ou igual a 1.' });
     }
 
@@ -193,17 +187,17 @@ const getItemsByGameName = async (req, res) => {
         }
 
         const totalItems = filteredItems.length;
-        const startIndex = (pagina - 1) * limite;
-        const endIndex = startIndex + Number(limite);
+        const startIndex = (page - 1) * limit;
+        const endIndex = startIndex + Number(limit);
 
-        const paginatedItems = filteredItems.slice(startIndex, endIndex);
+        const pagetedItems = filteredItems.slice(startIndex, endIndex);
 
         res.status(200).json({
             total: totalItems,
-            limite: Number(limite),
-            pagina: Number(pagina),
-            totalPaginas: Math.ceil(totalItems / limite),
-            dados: paginatedItems
+            limit: Number(limit),
+            page: Number(page),
+            totalPaginas: Math.ceil(totalItems / limit),
+            data: pagetedItems
         });
     } catch (error) {
         res.status(500).json({ message: 'Erro ao buscar itens por nome do jogo.', error });

@@ -1,14 +1,7 @@
 [
   {
-    "id": "24-1112",
-    "username": "adm2",
-    "password": "$2b$10$JDO9AffQBqeP/fDExZkvwumoAbJPVK/9CVDnMUQ/m/nxTrxywq7/m",
-    "isAdmin": true,
-    "email": "admin2@example.com"
-  },
-  {
     "id": "24-1113",
-    "username": "analuiza",
+    "username": "ana Luiza",
     "password": "$2b$10$g7w.oSCxnlpAw8PALP49f.e3fkouI4ROlrAIfT9ppH7NHstPu9bTC",
     "isAdmin": false,
     "email": "luluzin@gmail.com"
@@ -26,5 +19,19 @@
     "password": "$2b$10$.4M83u3itzcvbyzne0Ljk.YBJkIeC5ab6EzmsrEpjUoa/INAG84km",
     "isAdmin": false,
     "email": "Gutin@gmail.com"
+  },
+  {
+    "id": "24-1117",
+    "username": "jos pdro",
+    "password": "$2b$10$pr6LjSclsCp90ZmLzNwQSe/uZsKTLI/kFNHqBVhxWOhFhiptJ/62i",
+    "isAdmin": false,
+    "email": "jose@gmail.com"
+  },
+  {
+    "id": "24-1118",
+    "username": "adimin jose",
+    "password": "$2b$10$C6yr2TysUZQ/mexSa5v4a.Eh0Oc8Oy.nnONo76YbuO2kcpaaEXAqe",
+    "isAdmin": true,
+    "email": "adminjose@example.com"
   }
 ]

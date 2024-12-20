@@ -1,101 +1,24 @@
 [
   {
     "id": 1,
+    "gameId": 1,
     "type": "skin",
-    "name": "Awp | Dragon Lore",
+    "name": "riven pulse fire",
     "quality": "rara",
-    "description": "Uma das skins mais icônicas do CS:GO, com um design lendário de dragão.",
-    "price": 2000,
+    "description": "Skin para sniper com efeito especial nas flechas de gelo.",
+    "price": 550,
     "contact": "contact@exemplo.com",
-    "idGame": 1,
-    "createdBy": "24-1346"
+    "createdBy": "24-1117"
   },
   {
     "id": 2,
-    "type": "skin",
-    "name": "AK-47 | Fire Serpent",
-    "quality": "muito rara",
-    "descricao": "Skin da AK-47 com tema de serpente de fogo, muito procurada pelos jogadores.",
-    "price": 1500,
-    "contact": "contact@exemplo.com",
-    "idGame": 1,
-    "createdBy": "24-1347"
-  },
-  {
-    "id": 3,
-    "type": "item",
-    "name": "Chave",
-    "quality": "comum",
-    "descricao": "Usada para abrir caixas no CS:GO.",
-    "price": 5,
-    "contact": "contact@exemplo.com",
-    "idGame": 1,
-    "createdBy": "24-1345"
-  },
-  {
-    "id": 4,
-    "type": "skin",
-    "name": "Arcana | Anti-Mage",
-    "quality": "arcana",
-    "descricao": "Uma arcana para Anti-Mage com visuais gloriosos e efeitos especiais.",
-    "price": 1200,
-    "contact": "contact@exemplo.com",
-    "idGame": 2,
-    "createdBy": "24-1346"
-  },
-  {
-    "id": 5,
-    "type": "skin",
-    "name": "Dragonclaw Hook",
-    "quality": "rara",
-    "descricao": "Uma skin épica para o icônico Hook do Pudge, com tema de dragão.",
-    "price": 35,
-    "contact": "contact@exemplo.com",
-    "idGame": 2,
-    "createdBy": "24-1347"
-  },
-  {
-    "id": 6,
-    "type": "skin",
-    "name": "Drow Ranger | Frost Arrows",
-    "quality": "rara",
-    "descricao": "Skin para Drow Ranger com efeito especial nas flechas de gelo.",
-    "price": 350,
-    "contact": "contact@exemplo.com",
-    "idGame": 2,
-    "createdBy": "24-1345"
-  },
-  {
-    "id": 7,
-    "gameId": 4,
-    "type": "skin",
-    "name": "geleira mortal",
-    "quality": "rara",
-    "description": "Skin para sniper com efeito especial nas flechas de gelo.",
-    "price": 550,
-    "contact": "contact@exemplo.com",
-    "createdBy": "24-1116"
-  },
-  {
-    "id": 8,
-    "gameId": 2,
-    "type": "skin",
-    "name": "geleira mortal",
-    "quality": "rara",
-    "description": "Skin para sniper com efeito especial nas flechas de gelo.",
-    "price": 550,
-    "contact": "contact@exemplo.com",
-    "createdBy": "24-1116"
-  },
-  {
-    "id": 9,
     "gameId": 1,
     "type": "skin",
-    "name": "geleira mortal",
+    "name": "riven coelhinha de batalha",
     "quality": "rara",
     "description": "Skin para sniper com efeito especial nas flechas de gelo.",
     "price": 550,
     "contact": "contact@exemplo.com",
-    "createdBy": "24-1116"
+    "createdBy": "24-1117"
   }
 ]
